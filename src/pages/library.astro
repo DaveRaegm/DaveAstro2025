@@ -181,17 +181,23 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
         const tags = item.tags || [];
         tags.forEach((tag, idx) => {
           if (idx < 2) {
-            tagsHtml += `<span class=\"tag-item\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-indigo-600 dark:text-indigo-400 hover:underline\">${tag}</a></span>`;
+            tagsHtml += `<span class=\"tag-item\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${tag}</a></span>`;
             if (idx < tags.length - 1 && idx < 1) tagsHtml += ", ";
           } else {
-            tagsHtml += `<span class=\"tag-item hidden\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-indigo-600 dark:text-indigo-400 hover:underline\">${tag}</a></span>`;
+            tagsHtml += `<span class=\"tag-item hidden\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${tag}</a></span>`;
             if (idx < tags.length - 1) tagsHtml += ", ";
           }
         });
         if (tags.length > 2) {
           tagsHtml += ` <span class=\"tag-more-button\">+${tags.length - 2} more</span>`;
         }
-        tr.innerHTML = `<td class=\"px-6 py-4 font-medium text-slate-900 dark:text-white whitespace-nowrap\"><a href=\"${item.postLink}\" class=\"hover:underline\">${item.title}</a></td><td class=\"px-6 py-4\"><a href=\"/category/${slugify(item.category)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${item.category}</a></td><td class=\"px-6 py-4 tags-cell\">${tagsHtml}</td><td class=\"px-6 py-4\">${item.postedDate || ''}</td><td class=\"px-6 py-4 flex items-center\">${icon}${item.source || ''}</td><td class=\"px-6 py-4\">${item.channel || ''}</td><td class=\"px-6 py-4 whitespace-nowrap\"><a href=\"${item.sourceLink}\" target=\"_blank\" class=\"font-medium text-theme-600 dark:text-theme-400 hover:underline\">Source</a></td>`;
+        // Format date as YYYY-MM-DD
+        let formattedDate = '';
+        if (item.postedDate) {
+          const d = new Date(item.postedDate);
+          formattedDate = d.toISOString().slice(0, 10);
+        }
+        tr.innerHTML = `<td class=\"px-6 py-4 font-medium text-slate-900 dark:text-white whitespace-nowrap\"><a href=\"${item.postLink}\" class=\"hover:underline\">${item.title}</a></td><td class=\"px-6 py-4\"><a href=\"/category/${slugify(item.category)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${item.category}</a></td><td class=\"px-6 py-4 tags-cell\">${tagsHtml}</td><td class=\"px-6 py-4\">${formattedDate}</td><td class=\"px-6 py-4 flex items-center\">${icon}${item.source || ''}</td><td class=\"px-6 py-4\">${item.channel || ''}</td><td class=\"px-6 py-4 whitespace-nowrap\"><a href=\"${item.sourceLink || '#'}\" target=\"_blank\" class=\"font-medium text-theme-600 dark:text-theme-400 hover:underline\">Source</a></td>`;
         tableBody.appendChild(tr);
       });
       renderPagination(data.length);
