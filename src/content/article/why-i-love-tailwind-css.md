@@ -6,6 +6,9 @@ author: "The Storyteller"
 category: "CSS"
 tags: ["tailwind", "css", "web development"]
 featured: false
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 When I first heard about Tailwind CSS, I was skeptical. "Utility classes? Isn't that just inline styles with extra steps?" I thought. But after giving it a fair try, I'm completely converted. Here's why Tailwind has become my go-to CSS framework.

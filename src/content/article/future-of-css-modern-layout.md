@@ -6,6 +6,9 @@ author: "The Storyteller"
 category: "CSS"
 tags: ["css", "grid", "flexbox", "layout", "modern web"]
 featured: false
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 CSS has evolved dramatically in recent years. Gone are the days of clearfix hacks, float-based layouts, and complex positioning workarounds. Modern CSS provides powerful, intuitive tools for creating sophisticated layouts with clean, maintainable code.

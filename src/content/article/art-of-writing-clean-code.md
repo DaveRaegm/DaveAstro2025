@@ -6,6 +6,9 @@ author: "Hasin Hayder"
 category: "Coding"
 tags: ["development", "best practices", "software"]
 featured: false
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 Writing code is easy. Writing clean code is an art form. Clean code is not just about making your program work—it's about creating something that others (including your future self) can understand, maintain, and extend.

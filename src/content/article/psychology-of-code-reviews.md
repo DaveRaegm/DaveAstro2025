@@ -6,6 +6,9 @@ author: "Hasin Hayder"
 category: "Team Culture"
 tags: ["code review", "team dynamics", "psychology", "collaboration"]
 featured: false
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 Code reviews are one of the most important practices in software development, yet they're often a source of stress, conflict, and misunderstanding. Understanding the psychology behind code reviews can transform them from dreaded obligations into powerful tools for team growth and code quality.

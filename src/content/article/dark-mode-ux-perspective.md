@@ -8,6 +8,9 @@ tags: ["dark mode", "ux design", "accessibility"]
 featured: true
 thumb: "https://images.unsplash.com/photo-1562664377-709f2c337eb2?auto=format&fit=crop&w=400&q=80"
 large: "https://images.unsplash.com/photo-1562664377-709f2c337eb2?auto=format&fit=crop&w=2400&q=80"
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 Dark mode has evolved from a niche developer preference to a mainstream feature expected by users across all types of applications. But implementing dark mode well requires more than just inverting colors—it's about understanding user needs and creating an experience that works in all lighting conditions.

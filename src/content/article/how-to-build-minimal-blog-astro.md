@@ -8,6 +8,9 @@ tags: ["astro", "web development", "static sites"]
 featured: true
 thumb: "https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=400&q=80"
 large: "https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=2400&q=80"
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 Astro is revolutionizing the way we build static websites. In this comprehensive guide, we'll explore how to create a minimal, fast-loading blog that prioritizes performance and simplicity.

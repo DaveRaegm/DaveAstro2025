@@ -8,6 +8,9 @@ tags: ["graphql", "rest", "api", "backend", "architecture"]
 featured: true
 thumb: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&q=80"
 large: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2400&q=80"
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 The debate between GraphQL and REST has been raging in the development community for years. Both have their place in modern application architecture, but choosing the right one for your project can significantly impact development velocity, performance, and maintainability.

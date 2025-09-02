@@ -8,6 +8,9 @@ tags: ["microservices", "scalability", "architecture", "devops", "distributed-sy
 featured: false
 thumb: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=400&q=80"
 large: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=2400&q=80"
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 After five years of building, breaking, and rebuilding microservices architectures, I've learned that the devil is truly in the details. While the promise of microservices is compelling - independent deployments, technology diversity, team autonomy - the reality is far more nuanced.

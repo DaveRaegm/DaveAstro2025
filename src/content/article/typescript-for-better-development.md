@@ -8,6 +8,9 @@ tags: ["typescript", "javascript", "development", "tools"]
 featured: true
 thumb: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=400&q=80"
 large: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=2400&q=80"
+source: "Youtube" # e.g. "Blog", "Youtube", "News"
+channel: "AI Tech" # optional, e.g. "CSS Tricks"
+sourceLink: "https://youtube.com"
 ---
 
 TypeScript has revolutionized the way we write JavaScript. What started as Microsoft's attempt to bring type safety to JavaScript has become an essential tool for modern web development. In this article, we'll explore why TypeScript has become so popular and how it can transform your development experience.

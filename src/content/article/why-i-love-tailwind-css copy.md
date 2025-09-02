@@ -6,7 +6,6 @@ author: "The AI"
 category: "AI Tech"
 tags: ["AI", "Internet", "Technology"]
 featured: false
-postedDate: "2025-05-20"
 source: "Youtube" # e.g. "Blog", "Youtube", "News"
 channel: "AI Tech" # optional, e.g. "CSS Tricks"
 sourceLink: "https://youtube.com"
