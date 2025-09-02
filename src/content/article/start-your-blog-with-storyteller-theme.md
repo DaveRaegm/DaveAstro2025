@@ -8,7 +8,7 @@ tags: ["astro", "blog", "theme", "storyteller", "tutorial"]
 featured: true
 thumb: "https://images.unsplash.com/photo-1659942256016-5de203e0481b?auto=format&fit=crop&w=400&q=80"
 large: "https://images.unsplash.com/photo-1659942256016-5de203e0481b?auto=format&fit=crop&w=2400&q=80"
-source: "Youtube" # e.g. "Blog", "Youtube", "News"
+source: "Blog" # e.g. "Blog", "Youtube", "News"
 channel: "AI Tech" # optional, e.g. "CSS Tricks"
 sourceLink: "https://youtube.com"
 ---
