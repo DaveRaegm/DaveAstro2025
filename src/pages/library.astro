@@ -74,10 +74,10 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
             <th data-key="title" class="px-6 py-3 cursor-pointer">Title</th>
             <th data-key="category" class="px-6 py-3 cursor-pointer">Category</th>
             <th data-key="tags" class="px-6 py-3 cursor-pointer">Tags</th>
-            <th data-key="postedDate" class="px-6 py-3 cursor-pointer">Published Date</th>
+            <th data-key="postedDate" class="px-6 py-3 cursor-pointer w-32">Date</th>
             <th data-key="source" class="px-6 py-3 cursor-pointer">Source</th>
-            <th data-key="channel" class="px-6 py-3 cursor-pointer">Channel/Publication</th>
-            <th class="px-6 py-3">Source Link</th>
+            <th data-key="channel" class="px-6 py-3 cursor-pointer">Channel</th>
+            <th class="px-6 py-3">Link</th>
           </tr>
         </thead>
         <tbody id="data-table-body">
@@ -218,7 +218,7 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
           const d = new Date(item.postedDate);
           formattedDate = d.toISOString().slice(0, 10);
         }
-        tr.innerHTML = `<td class=\"px-6 py-4 font-medium text-slate-900 dark:text-white whitespace-nowrap\"><a href=\"${item.postLink}\" class=\"hover:underline\">${item.title}</a></td><td class=\"px-6 py-4\"><a href=\"/category/${slugify(item.category)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${item.category}</a></td><td class=\"px-6 py-4 tags-cell\">${tagsHtml}</td><td class=\"px-6 py-4\">${formattedDate}</td><td class=\"px-6 py-4 flex items-center\">${icon}${item.source || ''}</td><td class=\"px-6 py-4\">${item.channel || ''}</td><td class=\"px-6 py-4 whitespace-nowrap\"><a href=\"${item.sourceLink || '#'}\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" class=\"font-medium text-theme-600 dark:text-theme-400 hover:underline\">Source</a></td>`;
+        tr.innerHTML = `<td class=\"px-6 py-4 font-medium text-slate-900 dark:text-white whitespace-nowrap\"><a href=\"${item.postLink}\" class=\"hover:underline\">${item.title}</a></td><td class=\"px-6 py-4\"><a href=\"/category/${slugify(item.category)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${item.category}</a></td><td class=\"px-6 py-4 tags-cell\">${tagsHtml}</td><td class=\"px-6 py-4 whitespace-nowrap w-32\">${formattedDate}</td><td class=\"px-6 py-4 flex items-center\">${icon}${item.source || ''}</td><td class=\"px-6 py-4\">${item.channel || ''}</td><td class=\"px-6 py-4 whitespace-nowrap\"><a href=\"${item.sourceLink || '#'}\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" class=\"font-medium text-theme-600 dark:text-theme-400 hover:underline\">Link</a></td>`;
         tableBody.appendChild(tr);
       });
       renderPagination(data.length);
