@@ -43,7 +43,7 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
       <input type="text" id="search-input" placeholder="Search content..." class="w-full max-w-xs px-4 py-2 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
       <button id="reset-btn" class="reset-btn ml-4 px-4 py-2 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition font-medium">Reset All</button>
     </div>
-    <div id="filter-bar" class="filter-bar flex justify-between items-center p-4 mb-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl cursor-pointer w-full">
+    <div id="filter-bar" class="filter-bar flex justify-between items-center p-4 mb-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl cursor-pointer w-full" style="max-width:100%;">
       <span class="font-semibold text-slate-800 dark:text-slate-200">Filters</span>
       <button class="dropdown-btn font-semibold text-indigo-600 dark:text-indigo-400">▼</button>
     </div>
