@@ -102,6 +102,10 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
 <style>
   .tags-cell span.tag-item {
     display: inline-block;
+    margin-right: 0.25em;
+  }
+  .tags-cell span.tag-item:last-child {
+    margin-right: 0;
   }
   .tag-more-button {
     cursor: pointer;
@@ -117,6 +121,27 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
   .dark .tag-more-button {
     background-color: #3730a3; /* Tailwind dark indigo-800 */
     color: #c7d2fe; /* Tailwind dark indigo-300 */
+  }
+  @media (max-width: 900px) {
+    .max-w-[1600px] {
+      max-width: 100vw !important;
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+    .table-wrapper {
+      overflow-x: auto !important;
+    }
+    table {
+      font-size: 0.95em;
+    }
+    .pagination, .search-bar, #filter-bar, #filters-container {
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+    .page-size {
+      margin-top: 0.5em;
+      align-self: flex-start !important;
+    }
   }
 </style>
 
