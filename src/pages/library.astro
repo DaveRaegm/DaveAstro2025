@@ -67,8 +67,8 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
         </div>
       </div>
     </div>
-    <div class="table-wrapper border border-slate-200 dark:border-slate-700 rounded-xl w-full">
-      <table class="w-full text-sm text-left text-slate-600 dark:text-slate-400">
+    <div class="table-wrapper overflow-x-auto border border-slate-200 dark:border-slate-700 rounded-xl w-full" style="max-width:100%;">
+      <table class="min-w-full text-sm text-left text-slate-600 dark:text-slate-400">
         <thead class="text-xs text-slate-700 dark:text-slate-300 uppercase bg-slate-50 dark:bg-slate-800">
           <tr>
             <th data-key="title" class="px-6 py-3 cursor-pointer">Title</th>
