@@ -13,6 +13,9 @@ const articleCollection = defineCollection({
         featured: z.boolean().default(false),
         thumb: z.string().optional(),
         large: z.string().optional(),
+        source: z.string().optional(),      
+        channel: z.string().optional(),     
+        sourceLink: z.string().optional(), 
     }),
 });
 
