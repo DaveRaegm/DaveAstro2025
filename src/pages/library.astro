@@ -179,6 +179,7 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
         if (moreButton) {
           moreButton.addEventListener('click', () => {
             cell.querySelectorAll('.tag-item.hidden').forEach(tag => tag.classList.remove('hidden'));
+            cell.querySelectorAll('.tag-comma.hidden').forEach(comma => comma.classList.remove('hidden'));
             moreButton.remove();
           }, { once: true });
         }
@@ -202,12 +203,10 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
         let tagsHtml = "";
         const tags = item.tags || [];
         tags.forEach((tag, idx) => {
-          if (idx < 2) {
-            tagsHtml += `<span class=\"tag-item\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${tag}</a></span>`;
-            if (idx < tags.length - 1 && idx < 1) tagsHtml += ", ";
-          } else {
-            tagsHtml += `<span class=\"tag-item hidden\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${tag}</a></span>`;
-            if (idx < tags.length - 1) tagsHtml += ", ";
+          const isHidden = idx >= 2 ? 'hidden' : '';
+          tagsHtml += `<span class=\"tag-item ${isHidden}\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${tag}</a></span>`;
+          if (idx < tags.length - 1) {
+            tagsHtml += `<span class=\"tag-comma ${isHidden}\">, </span>`;
           }
         });
         if (tags.length > 2) {
