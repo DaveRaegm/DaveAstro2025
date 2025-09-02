@@ -76,11 +76,10 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
             <th data-key="title" class="px-6 py-3 cursor-pointer">Title</th>
             <th data-key="category" class="px-6 py-3 cursor-pointer">Category</th>
             <th data-key="tags" class="px-6 py-3 cursor-pointer">Tags</th>
-            <th data-key="reviewDate" class="px-6 py-3 cursor-pointer">Review Date</th>
-            <th data-key="postedDate" class="px-6 py-3 cursor-pointer">Posted Date</th>
+            <th data-key="postedDate" class="px-6 py-3 cursor-pointer">Published Date</th>
             <th data-key="source" class="px-6 py-3 cursor-pointer">Source</th>
             <th data-key="channel" class="px-6 py-3 cursor-pointer">Channel/Publication</th>
-            <th class="px-6 py-3">Link</th>
+            <th class="px-6 py-3">Source Link</th>
           </tr>
         </thead>
         <tbody id="data-table-body">
@@ -150,42 +149,16 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
         Blog: `<svg class="inline-block w-4 h-4 mr-1.5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M4 22h16v-2H4v2zm0-4h10v-2H4v2zm0-4h16v-2H4v2zm0-4h10V8H4v2zm0-8v2h16V2H4z"/></svg>`
     };
 
-    // --- MODIFIED: Tag Truncation Logic ---
-    function truncateTags() {
-      const MAX_HEIGHT = 35; 
+    // --- MODIFIED: Tag Show/Hide Logic ---
+    function setupTagShowMore() {
       const tagCells = document.querySelectorAll('.tags-cell');
-
       tagCells.forEach(cell => {
         const moreButton = cell.querySelector('.tag-more-button');
-        if (moreButton) moreButton.remove();
-        cell.querySelectorAll('.tag-item').forEach(tag => tag.classList.remove('hidden'));
-
-        if (cell.offsetHeight > MAX_HEIGHT) {
-          const tags = Array.from(cell.querySelectorAll('.tag-item'));
-          let hiddenCount = 0;
-          
-          for (let i = tags.length - 1; i >= 0; i--) {
-            if (cell.offsetHeight > MAX_HEIGHT) {
-              // MODIFIED: Use Tailwind's 'hidden' class for guaranteed effect
-              tags[i].classList.add('hidden');
-              hiddenCount++;
-            } else {
-              break;
-            }
-          }
-
-          if (hiddenCount > 0) {
-            const newMoreButton = document.createElement('span');
-            newMoreButton.className = 'tag-more-button';
-            newMoreButton.innerText = `+${hiddenCount} more`;
-            cell.appendChild(newMoreButton);
-
-            newMoreButton.addEventListener('click', () => {
-              // MODIFIED: Remove Tailwind's 'hidden' class to show all tags
-              cell.querySelectorAll('.tag-item.hidden').forEach(tag => tag.classList.remove('hidden'));
-              newMoreButton.remove();
-            }, { once: true });
-          }
+        if (moreButton) {
+          moreButton.addEventListener('click', () => {
+            cell.querySelectorAll('.tag-item.hidden').forEach(tag => tag.classList.remove('hidden'));
+            moreButton.remove();
+          }, { once: true });
         }
       });
     }
@@ -204,12 +177,25 @@ const uniqueSources = [...new Set(tableData.map(item => item.source).filter(Bool
         const tr = document.createElement('tr');
         tr.className = "bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 transition";
         const icon = sourceIcons[item.source] || '';
-        const tagsHtml = (item.tags || []).map(tag => `<span class="tag-item"><a href="/tag/${slugify(tag)}/" class="text-indigo-600 dark:text-indigo-400 hover:underline">${tag}</a></span>`).join(', ');
-        tr.innerHTML = `<td class="px-6 py-4 font-medium text-slate-900 dark:text-white whitespace-nowrap"><a href="${item.postLink}" class="hover:underline">${item.title}</a></td><td class="px-6 py-4"><a href="/category/${slugify(item.category)}/" class="text-indigo-600 dark:text-indigo-400 hover:underline">${item.category}</a></td><td class="px-6 py-4 tags-cell">${tagsHtml}</td><td class="px-6 py-4">${item.reviewDate || ''}</td><td class="px-6 py-4">${item.postedDate || ''}</td><td class="px-6 py-4 flex items-center">${icon}${item.source || ''}</td><td class="px-6 py-4">${item.channel || ''}</td><td class="px-6 py-4 whitespace-nowrap"><a href="${item.postLink}" target="_blank" class="font-medium text-indigo-600 dark:text-indigo-400 hover:underline">Post</a> | <a href="${item.sourceLink}" target="_blank" class="font-medium text-indigo-600 dark:text-indigo-400 hover:underline">Source</a></td>`;
+        let tagsHtml = "";
+        const tags = item.tags || [];
+        tags.forEach((tag, idx) => {
+          if (idx < 2) {
+            tagsHtml += `<span class=\"tag-item\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-indigo-600 dark:text-indigo-400 hover:underline\">${tag}</a></span>`;
+            if (idx < tags.length - 1 && idx < 1) tagsHtml += ", ";
+          } else {
+            tagsHtml += `<span class=\"tag-item hidden\"><a href=\"/tag/${slugify(tag)}/\" class=\"text-indigo-600 dark:text-indigo-400 hover:underline\">${tag}</a></span>`;
+            if (idx < tags.length - 1) tagsHtml += ", ";
+          }
+        });
+        if (tags.length > 2) {
+          tagsHtml += ` <span class=\"tag-more-button\">+${tags.length - 2} more</span>`;
+        }
+        tr.innerHTML = `<td class=\"px-6 py-4 font-medium text-slate-900 dark:text-white whitespace-nowrap\"><a href=\"${item.postLink}\" class=\"hover:underline\">${item.title}</a></td><td class=\"px-6 py-4\"><a href=\"/category/${slugify(item.category)}/\" class=\"text-theme-600 dark:text-theme-400 hover:underline\">${item.category}</a></td><td class=\"px-6 py-4 tags-cell\">${tagsHtml}</td><td class=\"px-6 py-4\">${item.postedDate || ''}</td><td class=\"px-6 py-4 flex items-center\">${icon}${item.source || ''}</td><td class=\"px-6 py-4\">${item.channel || ''}</td><td class=\"px-6 py-4 whitespace-nowrap\"><a href=\"${item.sourceLink}\" target=\"_blank\" class=\"font-medium text-theme-600 dark:text-theme-400 hover:underline\">Source</a></td>`;
         tableBody.appendChild(tr);
       });
       renderPagination(data.length);
-      truncateTags();
+      setupTagShowMore();
     }
     function renderPagination(totalItems) { /* ... Unchanged ... */ }
     function getActiveFilters() { /* ... Unchanged ... */ }
